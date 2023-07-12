@@ -8,6 +8,8 @@
 	<title>Cinema</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
  	<link rel="stylesheet" type="text/css" href="css/PublicHome.css">
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 	<div>
@@ -77,6 +79,39 @@
 			  </button>
 			</div>
 		</div>
+		<div class="movie-list">
+			    <div class="container-fluid">
+			    <h1 class="text-center" style="color:#C3E457"> LỊCH CHIẾU THEO PHIM | LỊCH CHIẾU THEO RẠP</h1>
+			    <div class="row">
+			      <div class="owl-carousel owl-theme nonloop owl-loaded owl-drag" >
+			        <div class="card">
+			          <div class="card-body">
+			            <img src="https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002703?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500" class="card-img-top" height="500px">
+			            <div class="row" style="height:200px">
+			              <h1 class="text-center">DETECTIVE CONAN THE MOVIE: BLACK IRON SUBMARINE</h1>
+			            </div>
+			          </div> 
+			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button> 
+			        </div>
+			        <div class="card" >
+			          <div class="card-body ">
+			            <img src="https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002750?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500" class="card-img-top" height="500px">
+			            <div class="row" style="height:200px"><h1 class="text-center">TẾU CÔNG CHUYỆN</h1></div>
+			          </div>
+			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			        </div>
+			        <div class="card">
+			          <div class="card-body ">
+			            <img src="https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002723?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500" class="card-img-top" height="500px">
+			            <div class="row" style="height:200px" ><h1 class="text-center">RALLY ROAD RACERS</h1></div>
+			          </div>
+			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  <h1></h1>
+  		</div>
 		<div class="bg-dark">
 			<footer class="py-5 container">
 
@@ -125,6 +160,21 @@
 		
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
 
+$('.nonloop').owlCarousel({
+    center: true,
+    items:5,
+    loop:true,
+    margin:20,
+    responsive:{
+        600:{
+            items:5
+        }
+    }
+});
+</script>
 </body>
 </html>
