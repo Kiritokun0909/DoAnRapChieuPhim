@@ -1,0 +1,16 @@
+admin
+	|
+	| -- include
+	|		|
+	|		| -- header.jsp: Khai báo các tag trong header
+	|		|
+	|		| -- script-body.jsp: Khai báo script tag trong body
+	|		|
+	|		| -- open-main-layout: khởi tạo main layout
+	|		|
+	|		| -- đóng-main-layout
+	|
+	|		|
+	|
+	|
+	| -- navigation: nơi chứa các thanh điều hướng

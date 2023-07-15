@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="org.springframework.util.StringUtils"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="include/include.jsp"></jsp:include>
+	<jsp:include page="include/header.jsp"></jsp:include>
 	
 	<!-- My CSS -->
 	<link href="assets/css/admin/room.css" rel="stylesheet" type="text/css">
@@ -12,24 +15,21 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
-		  $(".list-group-room").addClass("active");
+		  $(".js-active-room").addClass("active");
 		});
 	</script>
 	
 </head>
 
 <body>
-	<jsp:include page="sidenav.jsp"></jsp:include>
-	<!--Main layout-->
-	<main>
-		<div class = "layout">
-			<h1>H1 của room</h1>
+	<jsp:include page="navigation/sidenav.jsp"></jsp:include>
 
-		</div>
-	</main>
-	<!--Main layout-->
+	<jsp:include page="include/open-main-layout.jsp"></jsp:include>
+	
+	<h1>H1 của Room</h1>
+	
+	<jsp:include page="include/close-main-layout.jsp"></jsp:include>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+	<jsp:include page="include/script-body.jsp"></jsp:include>
 </body>
 </html>

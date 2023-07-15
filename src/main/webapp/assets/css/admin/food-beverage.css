@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.card-btn {
+	border: 1px darkgrey solid;
+	border-radius: 5px;
+	padding: 0px;
+	transition: transform .08s; /* Animation */
+}
+
+
+.card-btn:hover {
+	border: 1px solid lightskyblue;
+	transform: scale(1.08);
+}
+
+.card-title {
+	overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

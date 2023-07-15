@@ -71,18 +71,18 @@ html, body {
 	margin-right: 10px;
 }
 
-main {
+#main-layout {
 	height: 100%;
 	padding-left: var(--sidebar-padding-width);
 	padding-top: var(--content-padding-top);
 }
 
-.layout {
+.main-layout--padding {
 	padding: 24px;
 	height: 100%;
 }
 
-.layout .box {
+.main-layout .box {
 	width: 100px;
 	height: 300px;
 	background-color: red;
