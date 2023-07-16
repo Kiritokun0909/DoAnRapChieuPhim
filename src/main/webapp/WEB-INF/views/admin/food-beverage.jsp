@@ -10,6 +10,7 @@
 <!-- Thư viện biểu mẫu (form)-->
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>   
 
+<%-- <%@ taglib prefix="tg" tagdir="/WEB-INF/tags"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,16 +63,21 @@
 
 	<!-- Vùng chứa các món ăn -->
 	<div class="container text-center">
+		<%-- <jsp:useBean id="pagedListHolder" scope="request"
+				type="org.springframework.beans.support.PagedListHolder" />
+		<c:url value="admin/" var="pagedLink">
+			<c:param name="p" value="~" />
+		</c:url> --%>
 	  <div class="row row-cols-1 row-cols-md-5 g-4">
-	  	<c:forEach begin="1" end = "20" varStatus="status">
+	  	<c:forEach var="dv" items="${listDichVu}">
 	  		<div class="col">
-		      	<div class="card">
+		      	<div class="card ">
 			      	<button class = "card-btn" type="button" name="btn-show" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-						<img src="https://www.seriouseats.com/thmb/x6dcqHE-keGtGRMbwaEJqKxHeeQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2020__07__20200715-studio-ghibli-Howls_BaconEggs1500-ebebd31467c24b89af81d18bc73f638e.jpg" 
-						  	  class="card-img-top card-img-hover" alt="..." title="">
+						<img src="${dv.hinhAnh}" 
+						  	  class="card-img-top" alt="..." title="">
 						<div class="card-body">
-							<h5 class="card-title">Tên của món ăn được đặt ở đây nè</h5>
-							<p class="card-text">150,000đ</p>
+							<h5 class="card-title">${dv.tenDichVu}</h5>
+							<p class="card-text">${dv.donGia}</p>
 						</div>
 					</button>
 				</div>

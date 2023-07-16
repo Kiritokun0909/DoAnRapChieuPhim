@@ -79,7 +79,7 @@ html, body {
 
 .main-layout--padding {
 	padding: 24px;
-	height: 100%;
+	min-height: 100%;
 }
 
 .main-layout .box {

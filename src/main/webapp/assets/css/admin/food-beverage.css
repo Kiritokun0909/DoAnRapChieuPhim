@@ -6,16 +6,22 @@
 	transition: transform .08s; /* Animation */
 }
 
+.card-img-top {
+	aspect-ratio: 1 / 1;
+	background-color: white;
+}
 
 .card-btn:hover {
 	border: 1px solid lightskyblue;
 	transform: scale(1.08);
 }
 
+
 .card-title {
 	overflow: hidden;
     width: 100%;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
