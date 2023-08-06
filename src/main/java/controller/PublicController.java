@@ -10,8 +10,5 @@ public class PublicController {
 		return "public/home";
 	}
 	
-	@RequestMapping("sign-up")
-	public String signUp() {
-		return "public/sign-up";
-	}
+	
 }

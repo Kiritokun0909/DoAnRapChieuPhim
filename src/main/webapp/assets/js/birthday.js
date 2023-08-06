@@ -1,6 +1,6 @@
-const yearSelect = document.getElementById("year");
-const monthSelect = document.getElementById("month");
-const daySelect = document.getElementById("day");
+const yearSelected = document.getElementById("year");
+const monthSelected = document.getElementById("month");
+const daySelected = document.getElementById("day");
 
 const months = ['1', '2', '3', '4', '5', '6', 
 '7', '8', '9', '10', '11', '12'];
@@ -9,7 +9,7 @@ const months = ['1', '2', '3', '4', '5', '6',
 	for(let i = 0; i < months.length; i++){
 		const option = document.createElement("option");
 		option.textContent = months[i];
-		monthSelect.appendChild(option);
+		monthSelected.appendChild(option);
 	}
 })();
 
@@ -18,7 +18,7 @@ function populateYears(){
 	for(let i = 0; i < 101; i++){
 		const option = document.createElement("option");
 		option.textContent = year - i;
-		yearSelect.appendChild(option);
+		yearSelected.appendChild(option);
 	}
 }
 
@@ -36,8 +36,8 @@ function isLeapYear(year) {
 }
 
 function populateDays(month){
-	while(daySelect.firstChild){
-		daySelect.removeChild(daySelect.firstChild);
+	while(daySelected.firstChild){
+		daySelected.removeChild(daySelected.firstChild);
 	}
 	
 	let numDays;
@@ -47,7 +47,7 @@ function populateDays(month){
 		numDays = 31;
 	} 
 	else if(month == '2'){
-		if(isLeapYear(yearSelect.value)){
+		if(isLeapYear(yearSelected.value)){
 			numDays = 29;
 		}
 		else{
@@ -61,17 +61,17 @@ function populateDays(month){
 	for(let i = 1; i <= numDays; i++){
 		const option = document.createElement("option");
 		option.textContent = i;
-		daySelect.appendChild(option);
+		daySelected.appendChild(option);
 	}
 }
 
-populateDays(monthSelect.value);
+populateDays(monthSelected.value);
 populateYears();
 
-yearSelect.onchange = function(){
-	populateDays(monthSelect.value);
+yearSelected.onchange = function(){
+	populateDays(monthSelected.value);
 }
 
-monthSelect.onchange = function(){
-	populateDays(monthSelect.value);
+monthSelected.onchange = function(){
+	populateDays(monthSelected.value);
 }

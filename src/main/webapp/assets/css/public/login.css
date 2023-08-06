@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.form-container {
+	background: black;
+	padding: 32px 32px;
+	
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.column-item {
+	margin: 12px;
+	
+}
+
+.form {
+	background: #1c262f;
+	padding: 12px 24px;
+	
+	display: flex;
+	align-items: center;
+	border-radius: 2px;
+}
+
+.form__heading {
+	font-size: 2.2rem;
+	font-weight: 400;
+	color: #bfc9d2;
+	text-align: center;
+	padding: 20px;
+}
+
+.form__row {
+	margin-top: 10px;
+	display: flex;
+	flex: 1;
+}
+
+.form__label {
+	margin-top: 10px;
+	min-width: 150px;
+	color: #bfc9d2;
+}
+
+.form__label-sign-in {
+	margin-top: 10px;
+	min-width: 100px;
+	color: #bfc9d2;
+}
+
+.form__input {
+	flex: 1;
+	height: 36px;
+}
+
+.form__select {
+	height: 36px;
+}
+
+.form__row__policy-text {
+	margin-top: 20px;
+	color: #bfc9d2;
+}
+
+.form__row__btn{
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.form__row__btn.sign-in{
+	display: flex;
+	justify-content: space-between;
+}
+
+.form__row__btn button{
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 12px 24px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 2px;
+}

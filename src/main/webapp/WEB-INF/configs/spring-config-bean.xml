@@ -14,5 +14,13 @@
 	<bean id="DichVuDAO" class="DAOImpl.DichVuDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="QuyenDAO" class="DAOImpl.QuyenDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="TaiKhoanDAO" class="DAOImpl.TaiKhoanDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 </beans>
