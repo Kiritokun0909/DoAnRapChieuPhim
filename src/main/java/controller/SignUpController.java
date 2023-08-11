@@ -27,7 +27,6 @@ public class SignUpController {
 	
 	@Autowired
 	private QuyenDAO quyenDAO;
-	
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String loginHome() {
 		return "public/login";
@@ -68,18 +67,31 @@ public class SignUpController {
 			|| user.isTrangThai() == false	//Tài khoản bị khoá
 			|| !(user.getPassword().equals(request.getParameter("pwd")))	//Không đúng mật khẩu
 			) {
-			System.out.println("Login that bai");
+			boolean SignedIn= false;
+			model.addAttribute("SignedIn", SignedIn);
 			return "public/login";
 		}
-		
+		boolean SignedIn = true;
+		model.addAttribute("SignedIn", SignedIn);
+
 		System.out.println("Login thanh cong");
-		
+		System.out.println(user.getHo());
+		System.out.println(user.getTen());
 		//Ghi nhớ tài khoản bằng session
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
-		
+		//chuyển trang theo quyền tương ứng sau khi đăng nhập thành công
+		if(user.getQuyen().getTenQuyen().equals("Khách hàng")) {
+			return "public/accountInformation";
+		}
+		else if(user.getQuyen().getTenQuyen().equals("Quản lý")) {
+			return "public/home";
+		}
+		else {
+			
+			return "public/home";
+		}
 		//Cách lấy dữ liệu xem hàm test 
-		return "public/home";
 	}
 	
 	@RequestMapping(value="test", method=RequestMethod.GET)
