@@ -28,11 +28,6 @@ public class TaiKhoan {
 	
 	@Column(name="Ten")
 	private String ten;
-	
-	@Column(name = "NgaySinh")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd/mm/yyyy")
-	private Date ngaySinh;
 
 	@Column(name="DiaChi")
 	private String diaChi;
@@ -86,16 +81,6 @@ public class TaiKhoan {
 
 	public void setTen(String ten) {
 		this.ten = ten;
-	}
-
-	public Date getNgaySinh() {
-		return ngaySinh;
-	}
-
-	public void setNgaySinh(Date ngaySinh) {
-		this.ngaySinh = ngaySinh;
-		this.ngaySinh.setYear(this.ngaySinh.getYear() - 1900);
-		this.ngaySinh.setMonth(this.ngaySinh.getMonth() - 1);
 	}
 
 	public String getDiaChi() {

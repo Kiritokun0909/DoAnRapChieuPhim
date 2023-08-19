@@ -14,6 +14,10 @@ public interface TaiKhoanDAO {
 	
 	public boolean themTaiKhoan(TaiKhoan tk);
 	
+	public boolean suaTaiKhoan(TaiKhoan tk);
+	
+	public boolean xoaTaiKhoan(TaiKhoan tk);
+	
 	public TaiKhoan timTaiKhoan(String email);
 
 	/*

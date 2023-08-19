@@ -16,6 +16,8 @@
 	<!-- My CSS -->
 	<link href="assets/css/public/login.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/public/home.css" rel="stylesheet" type="text/css">
+	<!-- Get Current Path  -->
+	<base href="${pageContext.servletContext.contextPath }/">
 </head>
 <body>
 	<div>
@@ -86,15 +88,6 @@
 						</div>
 						
 						<div class="form__row">
-							<label class="form__label">Ngày sinh:</label>
-							<div class="form__select">
-								<select class="form__select" id="day" name="day"></select>
-								<select class="form__select" id="month" name="month"></select>
-								<select class="form__select" id="year" name="year"></select>
-							</div>
-						</div>
-						
-						<div class="form__row">
 							<label class="form__label">Địa chỉ:</label>
 							<input class="form__input" type="text" 
 								id="address" name="address" placeholder="Nhập địa chỉ"/>
@@ -119,6 +112,5 @@
 		
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-	<script src="assets/js/birthday.js"></script>
 </body>
 </html>

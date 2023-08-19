@@ -10,7 +10,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import DAO.QuyenDAO;
+import DAO.QuyenDAO.QuyenEnumID;
+import entity.DichVu;
 import entity.Quyen;
+import entity.TaiKhoan;
 
 @Transactional
 public class QuyenDAOImpl implements QuyenDAO {
@@ -21,6 +24,7 @@ public class QuyenDAOImpl implements QuyenDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Quyen> getListQuyen() {
 		Session sesson = sessionFactory.getCurrentSession();
@@ -29,10 +33,7 @@ public class QuyenDAOImpl implements QuyenDAO {
 		return (List<Quyen>)query.list();
 	}
 	
-	@Override
-	public Quyen getQuyen(QuyenEnumID maQuyen) {
-		Session session = sessionFactory.getCurrentSession();
-		
+	public String getTenQuyenViaEnum(QuyenEnumID maQuyen) {
 		String tenQuyen = "";
 		if(maQuyen == QuyenEnumID.GUEST) {
 			tenQuyen = "Khách hàng";
@@ -43,6 +44,14 @@ public class QuyenDAOImpl implements QuyenDAO {
 		else {
 			tenQuyen = "Nhân viên";
 		}
+		return tenQuyen;
+	}
+	
+	@Override
+	public Quyen getQuyen(QuyenEnumID maQuyen) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String tenQuyen = getTenQuyenViaEnum(maQuyen);
 		String hql = "From Quyen Where tenQuyen = :tenQuyen";
 		Query query = session.createQuery(hql);
 		query.setParameter("tenQuyen", tenQuyen);
@@ -54,5 +63,18 @@ public class QuyenDAOImpl implements QuyenDAO {
 			
 		}
 		return quyen;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<entity.TaiKhoan> getListTaiKhoanViaRole(QuyenEnumID id){
+		Session session = sessionFactory.getCurrentSession();
+		
+		Quyen quyen = getQuyen(id);
+		String hql = "from TaiKhoan Where maQuyen = :maQuyen";
+		Query query = session.createQuery(hql);
+		query.setParameter("maQuyen", quyen.getMaQuyen());
+		
+		return (List<TaiKhoan>)query.list();
+		
 	}
 }

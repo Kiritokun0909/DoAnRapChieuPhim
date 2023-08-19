@@ -46,6 +46,44 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 			System.out.println(ex);
 			return false;
 		}
+		finally {
+			session.close();
+		}
+	}
+	
+	@Override
+	public boolean suaTaiKhoan(TaiKhoan acc) {
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		try {
+			session.update(acc);
+			t.commit();
+			return true;
+		} catch (Exception ex) {
+			System.out.println(ex);
+			return false;
+		}
+		finally {
+			session.close();
+		}
+	}
+	
+	@Override
+	public boolean xoaTaiKhoan(TaiKhoan acc) {
+		Session session = sessionFactory.openSession();
+		Transaction t = session.beginTransaction();
+		try {
+			acc.setTrangThai(false);
+			session.update(acc);
+			t.commit();
+			return true;
+		} catch (Exception ex) {
+			System.out.println(ex);
+			return false;
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	@Override
