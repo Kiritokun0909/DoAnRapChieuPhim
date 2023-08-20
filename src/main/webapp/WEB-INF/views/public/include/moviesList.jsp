@@ -11,22 +11,28 @@
 			            <div class="row" style="height:200px">
 			              <h4 class="text-center">DETECTIVE CONAN THE MOVIE: BLACK IRON SUBMARINE</h4>
 			            </div>
-			          </div> 
-			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button> 
+			          </div>
+			          <a href="movieInformation.htm">
+			          	<button class="btn btn-outline-success fixed-bottom">Mua vé</button> 
+			          </a>
 			        </div>
 			        <div class="card" >
 			          <div class="card-body ">
 			            <img src="https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002750?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500" class="card-img-top" height="300px">
 			            <div class="row" style="height:200px"><h4 class="text-center">TẾU CÔNG CHUYỆN</h4></div>
 			          </div>
-			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			          <a href="movieInformation.htm">
+			          	<button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			          </a>
 			        </div>
 			        <div class="card">
 			          <div class="card-body ">
 			            <img src="https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002723?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500" class="card-img-top" height="300px">
 			            <div class="row" style="height:200px" ><h4 class="text-center">RALLY ROAD RACERS</h4></div>
 			          </div>
-			          <button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			          <a href="movieInformation.htm">
+			          	<button class="btn btn-outline-success fixed-bottom" type="submit">Mua vé</button>
+			          </a>
 			        </div>
 			      </div>
 			    </div>

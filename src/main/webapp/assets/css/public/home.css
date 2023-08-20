@@ -1,3 +1,33 @@
 .text-yellow{
 	color: #E3EE4E;
 }
+.nav-pills .nav-link.active{
+	background-color: #45ab3d;
+}
+.nav-item.nav-link{
+	color: white;
+}
+button.nav-link.btn.btn-success{
+	color: white;
+}
+.checkbox-button {
+  width: 4.6%;
+  display: inline-block;
+  background-color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.checkbox-button input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-button .checkbox-label {
+  margin-left: 5px;
+}
+
+.checkbox-button:has( input[type="checkbox"]:checked){
+  background-color: pink;
+}
