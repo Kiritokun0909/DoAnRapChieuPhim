@@ -3,9 +3,9 @@ package controller.admin;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import DAO.DichVuDAO;
 import bean.UploadFile;
 import entity.DichVu;
+import entity.TaiKhoan;
 
-@Transactional
 @Controller
 @RequestMapping("/admin")
 public class AdminControllerFoodBeverage {
@@ -70,56 +71,54 @@ public class AdminControllerFoodBeverage {
 	}
 
 	@RequestMapping(value = "/food-beverage/{id}.htm", params = "btn-show")
-	public String beginEditFoodBeverage(ModelMap modelMap, HttpServletRequest request, 
-			@PathVariable("id") Integer id) {
+	public String beginEditFoodBeverage(ModelMap model, HttpServletRequest request, @PathVariable("id") Integer id) {
+		HttpSession session = request.getSession();
 		DichVu dichVu = dichVuDAO.getDichVuById(id);
-		//HttpSession session = request.getSession();
-		//session.setAttribute("dichVu", dichVu);
-		modelMap.addAttribute("dichVu", dichVu);
+		
+		model.addAttribute("dichVu", dichVu);
+		session.setAttribute("dichVu", dichVu);
 
 		return "admin/food-beverage-form";
 	}
-	
-	/*
-	 * @Autowired
-	 * 
-	 * @Qualifier("upload-food-img") UploadFile uploadFile;
-	 */
-	
+
+	@Autowired
+	@Qualifier("upload-food-img")
+	UploadFile uploadFile;
+
 	@RequestMapping(value = "/food-beverage/edit-food", method=RequestMethod.POST)
-	public String EditFoodBeverage(ModelMap modelMap, HttpSession session,
+	public String test(ModelMap model,	HttpSession session, RedirectAttributes ra,
 			@ModelAttribute("dichVu") DichVu dichVuUpdate,
-			@RequestParam("hinhAnh") MultipartFile image) {
+			@RequestParam("hinhAnhUpdate") MultipartFile image) {
+		DichVu dichVuSession = (DichVu) session.getAttribute("dichVu");
+		System.out.println(dichVuSession.getMaDichVu());
 		
-		System.out.println("1");
-		//DichVu dichVuSession = (DichVu) session.getAttribute("dichVu");
-		
-		/*
-		 * if(!image.isEmpty()) { //Kiểm tra file hình có tồn tại trong server hay chưa
-		 * String path = uploadFile.getPath() + image.getOriginalFilename();
-		 * 
-		 * File file = new File(path); if (file.exists()) file.delete();
-		 * 
-		 * try { dichVuSession.setHinhAnh(image.getOriginalFilename());
-		 * image.transferTo(file); //Lưu hình vào server } catch(Exception e) {
-		 * modelMap.addAttribute("message", "Lỗi lưu file!"); } }
-		 */
-		
-		System.out.println("1");
-		//System.out.println(dichVuSession.getMaDichVu());
+		if (!image.isEmpty()) { // Kiểm tra file hình có tồn tại trong server hay chưa
+			String path = uploadFile.getPath() + image.getOriginalFilename();
 
-		//dichVuSession.setTenDichVu(dichVuUpdate.getTenDichVu());
-		//dichVuSession.setDonGia(dichVuUpdate.getDonGia());
+			File file = new File(path);
+			if (file.exists())
+				file.delete();
 
-		Integer temp = 1;
-		//dichVuDAO.updateDichVu(dichVuSession);
-		if (temp == 1) {
-			modelMap.addAttribute("message", "Update thành công!");
-		} else {
-			modelMap.addAttribute("message", "Update thất bại!");
+			try {
+				dichVuSession.setHinhAnh(image.getOriginalFilename());
+				image.transferTo(file); // Lưu hình vào server
+			} catch (Exception e) {
+				model.addAttribute("message", "Lỗi lưu file!");
+			}
 		}
-
-		return "redirect:/admin/food-beverage.htm";
+		
+		 dichVuSession.setTenDichVu(dichVuUpdate.getTenDichVu());
+		 dichVuSession.setDonGia(dichVuUpdate.getDonGia());
+		 
+		 Integer temp = 1; dichVuDAO.updateDichVu(dichVuSession); 
+		 if (temp == 1) {
+			 model.addAttribute("message", "Update thành công!"); } 
+		 else {
+			 model.addAttribute("message", "Update thất bại!"); 
+		}
+		
+		String id = Integer.toString(dichVuSession.getMaDichVu());
+		return "redirect:/admin/food-beverage/" + id + ".htm?btn-show=" + id;
 	}
 
 }

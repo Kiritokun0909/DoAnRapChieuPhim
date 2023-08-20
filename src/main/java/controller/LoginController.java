@@ -1,10 +1,5 @@
 package controller;
 
-import java.io.File;
-import java.util.Base64;
-
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,16 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import DAO.QuyenDAO;
 import DAO.QuyenDAO.QuyenEnumID;
 import DAO.TaiKhoanDAO;
-import bean.UploadFile;
 import entity.TaiKhoan;
 
 @Controller
@@ -33,22 +26,42 @@ public class LoginController {
 	@Autowired
 	private TaiKhoanDAO accountDAO;
 	
-	@RequestMapping(value="login", method=RequestMethod.GET)
-	public String loginPage(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		
-		if(session.getAttribute("isSigned") != null 
+	//Kiểm tra có tài khoản đang đăng nhập trong session hiện tại
+	public boolean isLogin(HttpSession session) {
+		if(session.getAttribute("isSigned") != null	
 			&& (Boolean) session.getAttribute("isSigned") == true) {
-			return "redirect:/login.htm";
+			return true;
+		}
+		return false;
+	}
+	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public String goToLoginPage(HttpServletRequest request, RedirectAttributes ra) {
+		if(isLogin(request.getSession())) {
+			return "redirect:/home.htm";
 		}
 		
 		return "public/login";
 	}
 	
+	public boolean isAdmin(TaiKhoan user) {
+		if(user.getQuyen().getTenQuyen().equals("Quản lý")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEmployee(TaiKhoan user) {
+		if(user.getQuyen().getTenQuyen().equals("Nhân viên")) {
+			return true;
+		}
+		return false;
+	}
+	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String login(ModelMap model, HttpServletRequest request) {
-		TaiKhoan user = accountDAO.timTaiKhoan(request.getParameter("username"));
+	public String login(ModelMap model, HttpServletRequest request, RedirectAttributes ra) {
 		HttpSession session = request.getSession();
+		TaiKhoan user = accountDAO.timTaiKhoan(request.getParameter("username"));
 		
 		if (user == null //Không tìm thấy tài khoản
 			|| user.isTrangThai() == false	//Tài khoản bị khoá
@@ -58,9 +71,16 @@ public class LoginController {
 			return "public/login";
 		}
 		
-		//Ghi nhớ tài khoản bằng session
+		//Ghi nhớ tài khoản đang đăng nhập bằng session
 		session.setAttribute("user", user);
 		session.setAttribute("isSigned", true);
+		
+		if(isAdmin(user)) {
+			return "redirect:/home.htm";
+		}
+		if(isEmployee(user)) {
+			return "redirect:/employee/home.htm";
+		}
 		
 		return "redirect:/home.htm";
 	}
@@ -68,8 +88,8 @@ public class LoginController {
 	@RequestMapping(value="logout", method=RequestMethod.GET)
 	public String logout(ModelMap model, HttpServletRequest request, HttpServletResponse response){
 		HttpSession session = request.getSession();
-		if(session.getAttribute("isSigned") == null	
-			|| (Boolean) session.getAttribute("isSigned") == false) {
+		
+		if(!isLogin(session)) {
 			return "redirect:/home.htm";
 		}
 		

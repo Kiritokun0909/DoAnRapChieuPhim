@@ -17,5 +17,4 @@ public interface QuyenDAO {
 	
 	public Quyen getQuyen(QuyenEnumID quyen);
 	
-	List<TaiKhoan> getListTaiKhoanViaRole(QuyenEnumID quyen);
 }

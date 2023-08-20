@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import DAO.DichVuDAO;
 import DAO.QuyenDAO;
 import DAO.QuyenDAO.QuyenEnumID;
+import DAO.TaiKhoanDAO;
 import entity.DichVu;
 import entity.TaiKhoan;
 
@@ -19,11 +20,11 @@ import entity.TaiKhoan;
 @RequestMapping("/admin/")
 public class AdminController {
 	@Autowired
-	private QuyenDAO quyenDAO;
+	private TaiKhoanDAO accountDAO;
 	
 	@RequestMapping("manage-employee")
 	public String listNhanVien(ModelMap model, HttpServletRequest request) {
-		List<TaiKhoan> listTaiKhoan = quyenDAO.getListTaiKhoanViaRole(QuyenEnumID.EMPLOYEE);
+		List<TaiKhoan> listTaiKhoan = accountDAO.getListTaiKhoanViaRole(QuyenEnumID.EMPLOYEE);
 		
 		model.addAttribute("list", listTaiKhoan);
 		return "admin/manage-employee";

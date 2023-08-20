@@ -1,5 +1,7 @@
 package DAOImpl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,12 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import DAO.TaiKhoanDAO;
+import DAO.QuyenDAO;
+import DAO.QuyenDAO.QuyenEnumID;
+import entity.Quyen;
 import entity.TaiKhoan;
 
 @Transactional
 public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private QuyenDAO quyenDAO;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -102,6 +110,35 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
 		return acc;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public List<entity.TaiKhoan> getListTaiKhoanViaRole(QuyenEnumID id){
+		Session session = sessionFactory.getCurrentSession();
+		
+		Quyen quyen = quyenDAO.getQuyen(id);
+		String hql = "from TaiKhoan Where maQuyen = :maQuyen";
+		Query query = session.createQuery(hql);
+		query.setParameter("maQuyen", quyen.getMaQuyen());
+		
+		return (List<TaiKhoan>)query.list();
+		
+	}
+
+	@Override
+	public TaiKhoan getAccount(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hql = "from TaiKhoan Where maTaiKhoan = :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("maTaiKhoan", id);
+		
+		TaiKhoan tk = null;
+		try {
+			tk = (TaiKhoan) query.uniqueResult();
+		} catch (Exception ex) {
+			
+		}
+		
+		return tk;
+	}
 	
 }

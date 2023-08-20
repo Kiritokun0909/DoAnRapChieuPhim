@@ -65,16 +65,5 @@ public class QuyenDAOImpl implements QuyenDAO {
 		return quyen;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<entity.TaiKhoan> getListTaiKhoanViaRole(QuyenEnumID id){
-		Session session = sessionFactory.getCurrentSession();
-		
-		Quyen quyen = getQuyen(id);
-		String hql = "from TaiKhoan Where maQuyen = :maQuyen";
-		Query query = session.createQuery(hql);
-		query.setParameter("maQuyen", quyen.getMaQuyen());
-		
-		return (List<TaiKhoan>)query.list();
-		
-	}
+	
 }

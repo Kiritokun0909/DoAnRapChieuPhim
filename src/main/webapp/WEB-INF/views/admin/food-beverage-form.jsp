@@ -31,50 +31,31 @@
 
 	<jsp:include page="include/open-main-layout.jsp"></jsp:include>
 	${message }
-	<h1 class="modal-title fs-5" id="staticBackdropLabel">Thông tin
-		món</h1>
-	<hr />
+	<h1 class="modal-title fs-5" id="staticBackdropLabel">Thông tin món</h1>
+	<hr/>
 
-		<form:form action="admin/food-beverage/edit-food.htm"
-			modelAttribute="dichVu" enctype="multipart/form-data" method="post">
+		<form:form action="admin/food-beverage/edit-food.htm" method="post" modelAttribute="dichVu" enctype="multipart/form-data" >
 			<div class="mb-3">
 				<img id = "img-preview" src ="${dichVu.hinhAnh }" alt="...">
-				<input type="file" id="upload-food-img" name="hinhAnh"
+				<input type="file" id="upload-food-img" name="hinhAnhUpdate"
 					class="img-preview mb-3" />
 				<br/>
-				<!-- <input type="file" name="btn-preview" id="btn-preview" /> -->
-				<!-- <label for="basic-url" class="form-label">Link ảnh</label>
-				
-				<div class="input-group">
-					<span class="input-group-text" id="basic-addon3">https:</span> 
-					<input
-						type="text" class="form-control" id="basic-url"
-						aria-describedby="basic-addon3 basic-addon4">
-					<button class="btn btn-outline-secondary" type="button"
-						id="btn-preview">Ok</button>
-				</div> -->
 			</div>
 			
 			<div class="mb-3">
 				<label for="inputDichVu" class="form-label">Tên dịch vụ</label> 
-				<%-- <form:input
-					type="text" class="form-control" name="input-ten-dich-vu"
-					path="tenDichVu"/> --%>
-				<form:input path="tenDichVu"
-					type="text" class="form-control" 
-					/>
+				<form:input path="tenDichVu" type="text" class="form-control"/>
+
 			</div>
 			
 			<div class="input-group mb-3">
 				<span class="input-group-text">$</span> 
-				<form:input type="text" path="donGia"
-					class="form-control" name="input-gia-dich-vu"
-					aria-label="Amount (to the nearest dollar)"
-					 />
+				<form:input path="donGia" type="text" class="form-control"
+					aria-label="Amount (to the nearest dollar)"/>
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" id = "btn-exit" name="btn-exit"
+				<button type="button" class="btn btn-secondary" id="btn-exit" name="btn-exit"
 					data-bs-dismiss="modal" onclick="history.back()">Thoát</button>
 				<button type="submit" class="btn btn-primary btn-submit">Xác nhận</button>
 			</div>

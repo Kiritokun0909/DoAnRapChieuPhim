@@ -26,6 +26,11 @@
 			value="C:\Users\hoduc\Documents\DoAnRapChieuPhim\src\main\webapp\assets\image\account\"></property>
 	</bean>
 	
+	<bean id="upload-food-img" class="bean.UploadFile">
+		<property name="path"
+			value="C:\Users\hoduc\Documents\DoAnRapChieuPhim\src\main\webapp\assets\image\food\"></property>
+	</bean>
+	
 </beans>
 
 
