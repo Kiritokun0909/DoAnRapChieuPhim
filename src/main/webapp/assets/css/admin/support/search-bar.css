@@ -1,0 +1,27 @@
+@charset "UTF-8";
+:root {
+	--searchbar-padding-witdth: 50px;
+}
+
+/*Thanh Search*/
+.search-bar {
+	width: 50%;
+	margin: auto;
+}
+
+.search-bar__form--display {
+	width: 100%;
+	display: flex;
+}
+
+.search-bar__input--border {
+	border-radius: 0px;
+	border-top-left-radius: var(--searchbar-padding-witdth);
+	border-bottom-left-radius: var(--searchbar-padding-witdth);
+}
+
+.search-bar__search-btn--border {
+	border-radius: 0px;
+	border-top-right-radius: var(--searchbar-padding-witdth);
+	border-bottom-right-radius: var(--searchbar-padding-witdth);
+}

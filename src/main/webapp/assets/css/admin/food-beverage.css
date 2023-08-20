@@ -1,4 +1,14 @@
 @charset "UTF-8";
+
+/*Nút thêm*/
+.btn-add {
+	margin: 16px;
+	margin-top: 0px;
+}
+
+
+
+/*Phần Show Thông tin*/
 .card-btn {
 	border: 1px darkgrey solid;
 	border-radius: 5px;
@@ -25,3 +35,6 @@
     -webkit-box-orient: vertical;
 }
 
+.pagging--padding {
+	padding: 20px;
+}

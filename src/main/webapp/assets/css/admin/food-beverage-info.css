@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/*Modal chứa thông tin*/
+#img-preview {
+	display: block;
+	aspect-ratio: 1 / 1;
+	width: 25%;
+}
+
+#btn-exit {
+	margin-right: 4px;
+}
