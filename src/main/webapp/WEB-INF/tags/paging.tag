@@ -1,6 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ tag import="org.springframework.util.StringUtils"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Thư viện cơ bản (core)-->
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ attribute name="pagedListHolder" required="true"
 	type="org.springframework.beans.support.PagedListHolder"%>
 <%@ attribute name="pagedLink" required="true" type="java.lang.String"%>

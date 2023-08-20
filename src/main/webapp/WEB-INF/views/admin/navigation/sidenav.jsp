@@ -49,7 +49,7 @@
 		        <li class="nav-item dropdown">
 		           <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		            <img
-		                 src="https://play-lh.googleusercontent.com/4qAz40o6M5w6hJ62VsjwGbYueB0fRWPmiG1yOZpNHn3qo2uzlhZZ1mwE5jtBlPp3Lw"
+		                 src="https://cdn-icons-png.flaticon.com/512/2304/2304226.png"
 		                 class="rounded-circle avatar"
 		                 height="43"
 		                 alt=""
