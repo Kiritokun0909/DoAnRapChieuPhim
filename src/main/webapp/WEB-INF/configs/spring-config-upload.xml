@@ -23,12 +23,12 @@
 	<!-- Thay doi theo cau hình moi may -->
 	<bean id="accountImgDir" class="bean.UploadFile">
 		<property name="path"
-			value="C:\Users\hoduc\Documents\DoAnRapChieuPhim\src\main\webapp\assets\image\account\"></property>
+			value="D:\workspace\java\DoAnRapChieuPhim\src\main\webapp\assets\image\account\"></property>
 	</bean>
 	
 	<bean id="upload-food-img" class="bean.UploadFile">
 		<property name="path"
-			value="C:\Users\hoduc\Documents\DoAnRapChieuPhim\src\main\webapp\assets\image\food\"></property>
+			value="D:\workspace\java\DoAnRapChieuPhim\src\main\webapp\assets\image\foodBerevage\"></property>
 	</bean>
 	
 </beans>

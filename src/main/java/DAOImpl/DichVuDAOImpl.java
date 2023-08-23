@@ -23,6 +23,20 @@ public class DichVuDAOImpl implements DichVuDAO{
 	}
 	
 	@Override
+	public int soLuongDichVu() {
+		long num = 0;
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "Select COUNT(*) From DichVu";
+		Query query = session.createQuery(hql);
+		try {
+			num =  (long) query.uniqueResult();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return (int) num;
+	}
+	
+	@Override
 	public List<DichVu> getListDichVu() {
 		Session sesson = sessionFactory.getCurrentSession();
 		String hql = "from DichVu";
@@ -50,29 +64,44 @@ public class DichVuDAOImpl implements DichVuDAO{
 	}
 	
 	@Override
-	public Integer updateDichVu(DichVu dichVu){
+	public boolean updateDichVu(DichVu dichVu){
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		System.out.print("1");
 		try {
-			System.out.print("2");
 			session.update(dichVu);
-			System.out.print("3");
 			transaction.commit();
-			System.out.print("4");
 		}
 		catch (Exception e) {
 			System.out.println(e);
 			// TODO: handle exception
 			transaction.rollback();
-			return 0;
+			return false;
 		}
 		finally {
-			System.out.print("6");
 			session.close();
 		}
-		System.out.print("7");
-		return 1;
+		return true;
 	}
+	
+	@Override
+	public boolean insertDichVu(DichVu dichVu) {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		try {
+			dichVu.setMaDichVu(soLuongDichVu() + 1);
+			session.save(dichVu);
+			transaction.commit();
+		} catch (Exception ex) {
+			System.out.println(ex);
+		// TODO: handle exception
+					transaction.rollback();
+					return false;
+		}
+		finally {
+			session.close();
+		}
+		return true;
+	}
+
 }

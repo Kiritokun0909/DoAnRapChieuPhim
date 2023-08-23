@@ -350,8 +350,8 @@
 
 			</div>
 
-
-
+		</div>
+	</div>
 
 			<%@include file="/WEB-INF/views/public/include/footer.jsp"%>
 

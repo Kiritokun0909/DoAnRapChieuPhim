@@ -17,11 +17,11 @@
 <jsp:include page="include/header.jsp"></jsp:include>
 
 <!-- My CSS -->
-<link href="assets/css/admin/food-beverage-info.css" rel="stylesheet"
+<link href="assets/css/admin/food-beverage-form.css" rel="stylesheet"
 	type="text/css">
 
 <!-- My JS -->
-<!-- <script src="assets/js/admin/food-berevage.js" type="text/javascript"></script> -->
+<script src="assets/js/admin/food-berevage.js" type="text/javascript"></script>
 
 
 <title>Insert title here</title>
@@ -36,7 +36,7 @@
 
 		<form:form action="admin/food-beverage/edit-food.htm" method="post" modelAttribute="dichVu" enctype="multipart/form-data" >
 			<div class="mb-3">
-				<img id = "img-preview" src ="${dichVu.hinhAnh }" alt="...">
+				<img id = "img-preview" src ="<c:url value="/assets/image/foodBeverage/${dichVu.hinhAnh} "/>" alt="...">
 				<input type="file" id="upload-food-img" name="hinhAnhUpdate"
 					class="img-preview mb-3" />
 				<br/>
@@ -44,23 +44,21 @@
 			
 			<div class="mb-3">
 				<label for="inputDichVu" class="form-label">Tên dịch vụ</label> 
-				<form:input path="tenDichVu" type="text" class="form-control"/>
+				<form:input path="tenDichVu" type="text" class="form-control" placeholder="Điền tên dịch vụ"/>
 
 			</div>
 			
 			<div class="input-group mb-3">
-				<span class="input-group-text">$</span> 
+				<span class="input-group-text">VND</span> 
 				<form:input path="donGia" type="text" class="form-control"
 					aria-label="Amount (to the nearest dollar)"/>
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" id="btn-exit" name="btn-exit"
-					data-bs-dismiss="modal" onclick="history.back()">Thoát</button>
-				<button type="submit" class="btn btn-primary btn-submit">Xác nhận</button>
+				<input type="submit" class="btn btn-secondary" name ="cancel" value="Thoát"/>
+				<input type="submit" class="btn btn-primary btn-submit" name="edit" value="${btnSubmitVal}"/>
 			</div>
 		</form:form>
-
 	<jsp:include page="include/close-main-layout.jsp"></jsp:include>
 
 	<jsp:include page="include/script-body.jsp"></jsp:include>

@@ -23,7 +23,7 @@
 	type="text/css">
 
 <!-- My JS -->
-<!-- <script src="assets/js/admin/food-berevage.js" type="text/javascript"></script> -->
+<script src="assets/js/admin/food-berevage.js" type="text/javascript"></script>
 
 
 <title>Insert title here</title>
@@ -33,7 +33,8 @@
 	<jsp:include page="navigation/sidenav.jsp"></jsp:include>
 
 	<jsp:include page="include/open-main-layout.jsp"></jsp:include>
-
+	
+	
 	<!-- Thanh Search -->
 	<div class="input-group mb-3 search-bar">
 		<form class="search-bar__form--display"
@@ -53,61 +54,10 @@
 	<hr>
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-add" name="btn-add"
-		data-bs-toggle="modal" data-bs-target="#staticBackdrop">Thêm
-		món</button>
-
-
-	<!-- Modal -->
-	<%-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-		data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div
-			class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="staticBackdropLabel">Thông
-						tin món</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form id="form-preview">
-						<div class="mb-3">
-							<img id="img-preview" src="" class="img-preview mb-3" alt="...">
-							<!-- <input type="file" name="btn-preview" id="btn-preview" /> -->
-							<label for="basic-url" class="form-label">Your vanity URL</label>
-							<div class="input-group">
-								<span class="input-group-text" id="basic-addon3">https:</span>
-								<input type="text" class="form-control" id="basic-url"
-									aria-describedby="basic-addon3 basic-addon4">
-								<button class="btn btn-outline-secondary" type="button"
-									id="btn-preview">Ok</button>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="formGroupExampleInput" class="form-label">Tên
-								dịch vụ</label> <input type="text" class="form-control"
-								name="input-ten-dich-vu" placeholder="Example input placeholder">
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text">$</span> <input type="text"
-								class="form-control" name="input-gia-dich-vu"
-								aria-label="Amount (to the nearest dollar)">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<form id="form-button">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Thoát</button>
-						<button type="button" class="btn btn-primary btn-submit"
-							name="btn-submit" id="modal-submit-button">Xác nhận</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> --%>
+	<form action="admin/food-beverage-add.htm">
+	<button type="submit" class="btn btn-primary btn-add"
+		data-bs-toggle="modal" data-bs-target="#staticBackdrop">Thêm món</button>
+	</form>
 
 
 	<!-- Vùng chứa các món ăn -->
@@ -122,10 +72,12 @@
 				varStatus="status">
 				<div class="col" >
 					<form class="card" action = "admin/food-beverage/${dv.maDichVu}.htm">
+						
 						<button class="card-btn" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop" type="submit" name="btn-show"
 							value="${dv.maDichVu}">
-							<img src="${dv.hinhAnh}" class="card-img-top" alt="..." title="">
+							<img src ="<c:url value="/assets/image/foodBeverage/${dv.hinhAnh} "/>" 
+								class="card-img-top" alt="..." title="">
 							<div class="card-body">
 								<h5 class="card-title">${dv.tenDichVu}</h5>
 								<p hidden="true" class="card-info-hidden ma-dich-vu">${dv.maDichVu }</p>

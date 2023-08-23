@@ -15,6 +15,10 @@ public class DichVu {
 	
 	public DichVu() {
 		super();
+		this.maDichVu = 0;
+		this.tenDichVu = "";
+		this.donGia = 0;
+		this.hinhAnh = "default-avatar.png";
 	}
 
 	public int getMaDichVu() {
